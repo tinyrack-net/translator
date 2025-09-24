@@ -21,4 +21,3 @@ export default {
   singleQuote: true,
   tailwindStylesheet: './src/index.css',
 };
-

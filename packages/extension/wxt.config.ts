@@ -1,5 +1,6 @@
 import { defineConfig } from 'wxt';
 import tailwindcss from '@tailwindcss/vite';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -9,6 +10,20 @@ export default defineConfig({
     permissions: ['storage', 'tabs', 'activeTab', 'contextMenus'],
   },
   vite: () => ({
-    plugins: [tailwindcss()],
+    plugins: [
+      tanstackRouter({
+        target: 'react',
+        autoCodeSplitting: false,
+        routesDirectory: 'src/entrypoints/options/routes',
+        generatedRouteTree: 'src/entrypoints/options/routeTree.gen.ts',
+      }),
+      tanstackRouter({
+        target: 'react',
+        autoCodeSplitting: false,
+        routesDirectory: 'src/entrypoints/popup/routes',
+        generatedRouteTree: 'src/entrypoints/popup/routeTree.gen.ts',
+      }),
+      tailwindcss(),
+    ],
   }),
 });
