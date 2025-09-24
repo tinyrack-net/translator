@@ -1,0 +1,14 @@
+{
+  "name": "tt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "./packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=extension"
+  },
+  "author": "",
+  "license": "ISC"
+}
