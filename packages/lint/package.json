@@ -1,0 +1,21 @@
+{
+  "name": "@tt/lint",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "echo \"skip build for @ytt/lint\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "typescript-eslint": "^8.39.0"
+  }
+}

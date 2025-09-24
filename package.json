@@ -7,7 +7,7 @@
     "./packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=extension"
+    "dev": "npm run dev --workspace=@tt/extension"
   },
   "author": "",
   "license": "ISC"
