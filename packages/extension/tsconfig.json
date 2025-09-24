@@ -4,6 +4,10 @@
     "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
     "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

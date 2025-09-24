@@ -1,3 +1,4 @@
+import path from 'path';
 import { defineConfig } from 'wxt';
 import tailwindcss from '@tailwindcss/vite';
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
@@ -25,5 +26,10 @@ export default defineConfig({
       }),
       tailwindcss(),
     ],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
   }),
 });

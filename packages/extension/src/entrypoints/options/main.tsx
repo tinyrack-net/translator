@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from '@/components/theme-provider';
 import {
   createHashHistory,
   createRouter,
   RouterProvider,
 } from '@tanstack/react-router';
+import '../../styles/globals.css';
 import { routeTree } from './routeTree.gen';
-import './style.css';
 
 const router = createRouter({ routeTree });
 const hashHistory = createHashHistory();
@@ -20,6 +21,8 @@ declare module '@tanstack/react-router' {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} history={hashHistory} />
+    <ThemeProvider defaultTheme="dark">
+      <RouterProvider router={router} history={hashHistory} />
+    </ThemeProvider>
   </React.StrictMode>,
 );
