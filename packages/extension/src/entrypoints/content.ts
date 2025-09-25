@@ -1,3 +1,5 @@
+import { getMathService } from '@/lib/math';
+
 /**
  * @description
  * 번역에서 제외할 태그 목록
@@ -15,6 +17,7 @@ export default defineContentScript({
   matches: ['<all_urls>'],
   runAt: 'document_end',
   main() {
+    getMathService();
     console.log('Hello content.');
 
     const mutationObserver = new MutationObserver((entries) => {
