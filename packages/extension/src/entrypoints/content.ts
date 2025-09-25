@@ -1,4 +1,11 @@
-const disallowedNodeName = ['style', 'script', 'noscript', 'input', 'textarea'];
+const disallowedNodeName = [
+  'style',
+  'script',
+  'noscript',
+  'input',
+  'textarea',
+  'code',
+];
 
 export default defineContentScript({
   matches: ['<all_urls>'],
@@ -29,20 +36,24 @@ export default defineContentScript({
         root,
         NodeFilter.SHOW_TEXT,
         (node) => {
-          const parentElement = node.parentElement;
+          let parentElement = node.parentElement;
 
           if (!parentElement) {
             return NodeFilter.FILTER_REJECT;
           }
 
-          if (
-            disallowedNodeName.includes(parentElement.nodeName.toLowerCase())
-          ) {
-            return NodeFilter.FILTER_REJECT;
-          }
+          while (parentElement) {
+            if (
+              disallowedNodeName.includes(parentElement.nodeName.toLowerCase())
+            ) {
+              return NodeFilter.FILTER_REJECT;
+            }
 
-          if (parentElement.isContentEditable) {
-            return NodeFilter.FILTER_REJECT;
+            if (parentElement.isContentEditable) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            parentElement = parentElement.parentElement;
           }
 
           if (!node.textContent?.trim().length) {
