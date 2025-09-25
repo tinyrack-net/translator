@@ -1,4 +1,8 @@
-const disallowedNodeName = [
+/**
+ * @description
+ * 번역에서 제외할 태그 목록
+ */
+const DISALLOWED_NODE_NAMES = [
   'style',
   'script',
   'noscript',
@@ -44,7 +48,9 @@ export default defineContentScript({
 
           while (parentElement) {
             if (
-              disallowedNodeName.includes(parentElement.nodeName.toLowerCase())
+              DISALLOWED_NODE_NAMES.includes(
+                parentElement.nodeName.toLowerCase(),
+              )
             ) {
               return NodeFilter.FILTER_REJECT;
             }
