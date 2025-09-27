@@ -9,7 +9,6 @@ export type Preferences = {
 export const [registerPreferencesService, getPreferencesService] =
   defineProxyService('PrefercencesService', () => {
     const item = flattenPromise(storage.getItem<Preferences>(STORAGE_KEY));
-
     return {
       getPreference(key: string) {
         return storage.getItem<Preferences>(STORAGE_KEY);

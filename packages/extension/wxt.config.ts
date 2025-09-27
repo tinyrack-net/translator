@@ -10,6 +10,7 @@ export default defineConfig({
   manifest: {
     permissions: ['storage', 'tabs', 'activeTab', 'contextMenus'],
   },
+  imports: false,
   vite: () => ({
     plugins: [
       tanstackRouter({

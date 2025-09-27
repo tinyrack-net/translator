@@ -1,4 +1,19 @@
-import { AppSidebar } from '@/components/app-sidebar';
+import {
+  AudioWaveform,
+  BookOpen,
+  Bot,
+  Command,
+  Frame,
+  GalleryVerticalEnd,
+  Map,
+  PieChart,
+  Settings2,
+  SquareTerminal,
+} from 'lucide-react';
+import { NavMain } from '@/components/nav-main';
+import { NavProjects } from '@/components/nav-projects';
+import { NavUser } from '@/components/nav-user';
+import { TeamSwitcher } from '@/components/team-switcher';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,8 +24,13 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Separator } from '@/components/ui/separator';
 import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
   SidebarInset,
   SidebarProvider,
+  SidebarRail,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
@@ -19,7 +39,149 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 function Page() {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <Sidebar collapsible="icon">
+        <SidebarHeader>
+          <TeamSwitcher
+            teams={[
+              {
+                name: 'Acme Inc',
+                logo: GalleryVerticalEnd,
+                plan: 'Enterprise',
+              },
+              {
+                name: 'Acme Corp.',
+                logo: AudioWaveform,
+                plan: 'Startup',
+              },
+              {
+                name: 'Evil Corp.',
+                logo: Command,
+                plan: 'Free',
+              },
+            ]}
+          />
+        </SidebarHeader>
+        <SidebarContent>
+          <NavMain
+            items={[
+              {
+                title: 'Playground',
+                url: '#',
+                icon: SquareTerminal,
+                isActive: true,
+                items: [
+                  {
+                    title: 'History',
+                    url: '#',
+                  },
+                  {
+                    title: 'Starred',
+                    url: '#',
+                  },
+                  {
+                    title: 'Settings',
+                    url: '#',
+                  },
+                ],
+              },
+              {
+                title: 'Models',
+                url: '#',
+                icon: Bot,
+                items: [
+                  {
+                    title: 'Genesis',
+                    url: '#',
+                  },
+                  {
+                    title: 'Explorer',
+                    url: '#',
+                  },
+                  {
+                    title: 'Quantum',
+                    url: '#',
+                  },
+                ],
+              },
+              {
+                title: 'Documentation',
+                url: '#',
+                icon: BookOpen,
+                items: [
+                  {
+                    title: 'Introduction',
+                    url: '#',
+                  },
+                  {
+                    title: 'Get Started',
+                    url: '#',
+                  },
+                  {
+                    title: 'Tutorials',
+                    url: '#',
+                  },
+                  {
+                    title: 'Changelog',
+                    url: '#',
+                  },
+                ],
+              },
+              {
+                title: 'Settings',
+                url: '#',
+                icon: Settings2,
+                items: [
+                  {
+                    title: 'General',
+                    url: '#',
+                  },
+                  {
+                    title: 'Team',
+                    url: '#',
+                  },
+                  {
+                    title: 'Billing',
+                    url: '#',
+                  },
+                  {
+                    title: 'Limits',
+                    url: '#',
+                  },
+                ],
+              },
+            ]}
+          />
+          <NavProjects
+            projects={[
+              {
+                name: 'Design Engineering',
+                url: '#',
+                icon: Frame,
+              },
+              {
+                name: 'Sales & Marketing',
+                url: '#',
+                icon: PieChart,
+              },
+              {
+                name: 'Travel',
+                url: '#',
+                icon: Map,
+              },
+            ]}
+          />
+        </SidebarContent>
+        <SidebarFooter>
+          <NavUser
+            user={{
+              name: 'shadcn',
+              email: 'm@example.com',
+              avatar: '/avatars/shadcn.jpg',
+            }}
+          />
+        </SidebarFooter>
+        <SidebarRail />
+      </Sidebar>
       <SidebarInset>
         <header className="group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear">
           <div className="flex items-center gap-2 px-4">
